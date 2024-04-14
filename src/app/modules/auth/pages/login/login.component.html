@@ -29,8 +29,4 @@
 
 </div>
 
-<div *ngIf="isLoading" class="h-screen w-screen flex items-center justify-center fixed top-0 left-0 select-none" style="background: rgba(0,0,0, 0.8)">
-  <div class="bg-white rounded-md px-6 py-4 select-none">
-    <div class="font-bold text-slate-500"><span>Cargando....</span></div>
-  </div>
-</div>
+<app-block-page [show]="isLoading"></app-block-page>

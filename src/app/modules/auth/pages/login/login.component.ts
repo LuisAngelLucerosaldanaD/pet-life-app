@@ -7,11 +7,12 @@ import {NgIf} from "@angular/common";
 import {ILoginForm} from "../../../../core/models/form/form.model";
 import {Subscription} from "rxjs";
 import {Router} from "@angular/router";
+import {BlockPageComponent} from "../../../../core/ui/block-page/block-page.component";
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [HttpClientModule, ReactiveFormsModule, NgIf],
+  imports: [HttpClientModule, ReactiveFormsModule, NgIf, BlockPageComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
   providers: [AuthService]
@@ -68,7 +69,7 @@ export class LoginComponent implements OnDestroy {
           sessionStorage.setItem('access_token', this._session.token);
           sessionStorage.setItem('session', JSON.stringify(this._session));
 
-          this._router.navigateByUrl('/pets');
+          this._router.navigateByUrl('/products');
         },
         error: (err: HttpErrorResponse) => {
           console.log(err);
