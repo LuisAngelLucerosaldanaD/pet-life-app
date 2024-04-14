@@ -1,0 +1,36 @@
+<div class="w-screen h-screen flex items-center justify-center">
+  <div class="flex items-center justify-center flex-col gap-4 mt-6 px-6 py-6 border rounded-md shadow-2xl">
+    <span class="text-slate-500 font-bold text-2xl uppercase">Pet Life</span>
+    <form [formGroup]="loginForm" class="mt-6"
+          style="display: flex; gap: 1rem; flex-direction: column; max-width: 500px; border-radius: 8px; width: 100%">
+      <div style="display: flex; flex-direction: column; width: 100%; gap: 1rem">
+        <span class="text-slate-500 font-bold text-sm">Nombre de Usuario</span>
+        <input type="text" placeholder="Ingrese su usuario" class="h-12 w-full px-4 py-2 rounded-md"
+               formControlName="username">
+
+        <small class="text-red-500 text-sm"
+               *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+          EL nombre de usario es requerido
+        </small>
+      </div>
+      <div style="display: flex; flex-direction: column; width: 100%; gap: 1rem">
+        <span  class="text-slate-500 font-bold text-sm">Contraseña</span>
+        <input type="password" placeholder="Ingrese su contraseñs" class="h-12 w-full px-4 py-2 rounded-md"
+               formControlName="password">
+        <small class="text-red-500 text-sm"
+               *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+          La contraseña del usario es requerido
+        </small>
+      </div>
+
+      <button (click)="login()" class="h-12 w-full rounded-md text-white bg-emerald-500" type="button">Iniciar Sesión</button>
+    </form>
+  </div>
+
+</div>
+
+<div *ngIf="isLoading" class="h-screen w-screen flex items-center justify-center fixed top-0 left-0 select-none" style="background: rgba(0,0,0, 0.8)">
+  <div class="bg-white rounded-md px-6 py-4 select-none">
+    <div class="font-bold text-slate-500"><span>Cargando....</span></div>
+  </div>
+</div>
